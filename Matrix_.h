@@ -13,6 +13,7 @@ public:
 	Matrix_(Matrix_&& tmp);
 	~Matrix_();
 
+	friend void swap(Matrix_ &set1, Matrix_ &set2) throw();
 	int &operator() (int, int);
 	Matrix_ &operator+ (const Matrix_ &right);
 	Matrix_ &operator+= (const Matrix_ &right);
@@ -20,7 +21,7 @@ public:
 	Matrix_ &operator-= (const Matrix_ &right);
 	Matrix_ &operator * (const Matrix_ &right);
 	Matrix_ &operator *= (const Matrix_ &right);
-	const Matrix_ &operator= (const Matrix_ &right);
+	Matrix_ &operator= (const Matrix_ right);
 	bool operator== (const Matrix_ &right) const;
 	//Matrix_& operator=(Matrix_&& tmp);
 

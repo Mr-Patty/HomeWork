@@ -47,6 +47,13 @@ Matrix_::Matrix_(Matrix_ &&tmp) : rows(tmp.rows), cols(tmp.cols)
 //	return *this;
 //}
 
+void swap(Matrix_ &m1, Matrix_ &m2) throw()
+{
+	std::swap(m1.rows, m1.rows);
+	std::swap(m1.cols, m1.cols);
+	std::swap(m1.matrix, m2.matrix);
+}
+
 int &Matrix_::operator() (int row, int col)
 {
 	if ((row > rows) || (col > cols))
@@ -57,24 +64,9 @@ int &Matrix_::operator() (int row, int col)
 	return (matrix[row][col]);
 }
 
-const Matrix_ &Matrix_::operator= (const Matrix_ &right)
+Matrix_ &Matrix_::operator= (Matrix_ right)
 {
-	if (&right != this)
-	{
-		if (rows != right.rows || cols != right.cols)
-		{
-			for (int i = 0; i < rows; i++)
-				delete[] matrix[i];
-			delete[] matrix;
-			matrix = new int*[rows];
-			for (int i = 0; i < rows; i++)
-				matrix[i] = new int[cols];
-		}
-		for (int i = 0; i < rows; i++)
-			for (int j = 0; j < cols; j++)
-				matrix[i][j] = right.matrix[i][j];
-	}
-
+	swap(*this, right);
 	return *this;
 }
 
