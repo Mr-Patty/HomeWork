@@ -49,8 +49,8 @@ Matrix_::Matrix_(Matrix_ &&tmp) : rows(tmp.rows), cols(tmp.cols)
 
 void swap(Matrix_ &m1, Matrix_ &m2) throw()
 {
-	std::swap(m1.rows, m1.rows);
-	std::swap(m1.cols, m1.cols);
+	std::swap(m1.rows, m2.rows);
+	std::swap(m1.cols, m2.cols);
 	std::swap(m1.matrix, m2.matrix);
 }
 
